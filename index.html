@@ -6,28 +6,28 @@
   <title>Portfolio Web</title>
   <style>
     :root {
-      --primary-color: hsl(98, 98%, 41%);
-      --bg-color: white;
-      --text-color: #333;
-      --white: #fff;
-      --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      --primary: #3bf641;
+      --light-bg: #f9fafb;
+      --text: #1f2937;
+      --white: #ffffff;
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     }
 
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
     }
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: var(--bg-color);
-      color: var(--text-color);
+      background-color: var(--light-bg);
+      color: var(--text);
+      line-height: 1.6;
     }
 
     header {
-      background: var(--primary-color);
+      background-color: var(--primary);
       color: var(--white);
       padding: 60px 20px;
       text-align: center;
@@ -35,52 +35,58 @@
     }
 
     header h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
+      font-size: 2.8rem;
     }
 
     header p {
       font-size: 1.2rem;
+      margin-top: 10px;
       opacity: 0.9;
     }
 
-    section {
+    .container {
       max-width: 1000px;
       margin: auto;
-      padding: 60px 20px;
-      animation: fadeInUp 1s ease-in-out;
+      padding: 40px 20px;
     }
 
     .section-title {
-      font-size: 2rem;
-      margin-bottom: 30px;
-      color: var(--primary-color);
-      position: relative;
-    }
-
-    .section-title::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: -10px;
-      height: 3px;
-      width: 60px;
-      background: var(--primary-color);
-      border-radius: 5px;
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+      border-left: 5px solid var(--primary);
+      padding-left: 10px;
+      animation: slideIn 0.6s ease;
     }
 
     .card {
-      background: var(--white);
+      background-color: var(--white);
       padding: 20px;
       margin-bottom: 30px;
       border-radius: 10px;
-      box-shadow: var(--card-shadow);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: var(--shadow);
+      animation: fadeInUp 1s ease;
     }
 
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    .skills ul {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      padding: 0;
+    }
+
+    .skills li {
+      background-color: #dbeafe;
+      color: #1e40af;
+      margin: 5px;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      transition: transform 0.3s;
+    }
+
+    .skills li:hover {
+      transform: scale(1.05);
     }
 
     .projects {
@@ -89,47 +95,81 @@
       gap: 20px;
     }
 
-    .card h3 {
-      color: var(--primary-color);
-      margin-bottom: 10px;
+    .project-card {
+      background: var(--white);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s, box-shadow 0.3s;
+      animation: fadeInUp 1s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .project-card h3 {
+      color: var(--primary);
     }
 
     .contact a {
       display: inline-block;
-      margin-bottom: 10px;
-      color: var(--primary-color);
+      color: var(--primary);
       text-decoration: none;
+      margin-top: 10px;
       transition: color 0.3s;
     }
 
     .contact a:hover {
-      color: #4438e5;
       text-decoration: underline;
+      color: #1d4ed8;
     }
 
     footer {
       text-align: center;
       padding: 20px;
-      background: #ddd;
+      background-color: #f1f5f9;
+      color: #6b7280;
       font-size: 0.9rem;
-      color: #555;
       animation: fadeIn 1s ease-in;
     }
 
     /* Animations */
     @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     @keyframes fadeInUp {
       from {
         opacity: 0;
-        transform: translateY(40px);
+        transform: translateY(30px);
       }
       to {
         opacity: 1;
         transform: translateY(0);
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .section-title {
+        font-size: 1.4rem;
       }
     }
   </style>
@@ -137,42 +177,58 @@
 <body>
 
   <header>
-    <h1>Your Name</h1>
-    <p>Creative Web Developer & Designer</p>
+    <h1>PIYUSH KANUGOJE</h1>
+    <p>Computer Engineering Student</p>
   </header>
 
-  <section class="about card">
-    <h2 class="section-title">About Me</h2>
-    <p>Hello! I’m a passionate web developer focused on crafting beautiful, functional, and user-centered websites. I thrive on turning ideas into reality with clean code and design.</p>
-  </section>
+  <div class="container">
 
-  <section>
-    <h2 class="section-title">Projects</h2>
-    <div class="projects">
-      <div class="card">
-        <h3>Responsive Portfolio</h3>
-        <p>A fully responsive portfolio with animated transitions and mobile-first design.</p>
-      </div>
-      <div class="card">
-        <h3>Weather App</h3>
-        <p>A minimal weather UI that fetches live weather data using APIs (JS version).</p>
-      </div>
-      <div class="card">
-        <h3>Blog Template</h3>
-        <p>A simple and clean HTML/CSS blog layout ready to be converted into WordPress.</p>
-      </div>
-    </div>
-  </section>
+    <section class="about card">
+      <h2 class="section-title">About Me</h2>
+      <p>MY Name is Piyush Jayant Kanugoje. Studying in Computer engineering in RSIET,Chiplun.I am a Third Year Computer Engineering student who enjoys designing websites and learning about new technologies. I am currently pursuing for internships in full stack Python development.</p>
+    </section>
 
-  <section class="contact card">
-    <h2 class="section-title">Contact</h2>
-    <p>Email: <a href="mailto:your@email.com">pkanugoje@email.com</a></p>
-    <p>GitHub: <a href="https://github.com/yourusername" target="_blank">https://github.com/PiyushRocks10/PiyushRocks10.git</a></p>
-    <p>LinkedIn: <a href="https://linkedin.com/in/yourname" target="_blank">linkedin.com/in/yourname</a></p>
-  </section>
+    <section class="skills card">
+      <h2 class="section-title">Skills</h2>
+      <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>Python</li>
+        <li>JavaScript</li>
+        <li>C++</li>
+        <li>MySQL</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="section-title">Projects</h2>
+      <div class="projects">
+        <div class="project-card">
+          <h3>Student Portfolio Website</h3>
+          <p>A personal portfolio made using HTML and CSS only. Fully responsive and animated.</p>
+        </div>
+        <div class="project-card">
+          <h3>Quiz App (Python)</h3>
+          <p>A terminal-based quiz app using Python that helps students practice multiple-choice questions.</p>
+        </div>
+        <div class="project-card">
+          <h3>To-Do List App</h3>
+          <p>A simple and clean to-do list website built using HTML, CSS, and JavaScript.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact card">
+      <h2 class="section-title">Contact</h2>
+      <p>Email: <a href="mailto:john.doe@example.com">Pkanugoje@gmail.com</a></p>
+      <p>GitHub: <a href="https://github.com/johndoe" target="_blank">github.com/PiyushRocks10</a></p>
+      <p>LinkedIn: <a href="https://linkedin.com/in/johndoe" target="_blank">linkedin.com/in/piyushkanugoje</a></p>
+    </section>
+
+  </div>
 
   <footer>
-    &copy; 2025 Your Name. Made with ❤️ in HTML & CSS.
+    &copy; 2025 Piyush Kanugoje| Built with HTML & CSS only
   </footer>
 
 </body>
